@@ -1,0 +1,13 @@
+name = "Telescope"
+uuid = "5cda3ad9-a1fd-4c59-8c0c-bd6100725b84"
+authors = ["Joshua Higginbotham <jhigginbotham64@gmail.com> and contributors"]
+version = "0.1.2"
+
+[compat]
+julia = "1.6"
+
+[extras]
+Test = "8dfed614-e22c-5e08-85e1-65c5234f0b40"
+
+[targets]
+test = ["Test"]
