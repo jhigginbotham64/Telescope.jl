@@ -1,0 +1,6 @@
+[general]
+library_name = "libtelescope"
+output_file_path = "../src/Telescope.jl"
+module_name = "Telescope"
+jll_pkg_name = "Telescope_jll"
+export_symbol_prefixes = ["TS_"]
