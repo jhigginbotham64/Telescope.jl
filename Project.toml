@@ -10,6 +10,8 @@ Telescope_jll = "ae456e04-aaf2-55ce-80c6-09193969412e"
 
 [compat]
 Clang = "0.15"
+CEnum = "0.4"
+Telescope_jll = "0.1.2"
 julia = "1.6"
 
 [extras]
