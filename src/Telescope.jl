@@ -37,13 +37,13 @@ function TS_VkBeginCommandBuffer()
     ccall((:TS_VkBeginCommandBuffer, libtelescope), Cvoid, ())
 end
 
-function TS_VkBeginRenderPass(r, g, b, a)
-    ccall((:TS_VkBeginRenderPass, libtelescope), Cvoid, (Cfloat, Cfloat, Cfloat, Cfloat), r, g, b, a)
+# no prototype is found for this function at telescope.h:26:6, please use with caution
+function TS_VkBeginDrawPass()
+    ccall((:TS_VkBeginDrawPass, libtelescope), Cvoid, ())
 end
 
-# no prototype is found for this function at telescope.h:28:6, please use with caution
-function TS_VkEndRenderPass()
-    ccall((:TS_VkEndRenderPass, libtelescope), Cvoid, ())
+function TS_VkEndDrawPass(r, g, b, a)
+    ccall((:TS_VkEndDrawPass, libtelescope), Cvoid, (Cfloat, Cfloat, Cfloat, Cfloat), r, g, b, a)
 end
 
 # no prototype is found for this function at telescope.h:30:6, please use with caution
