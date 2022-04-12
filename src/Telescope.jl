@@ -14,8 +14,8 @@ function TS_VkCmdDrawRect(r, g, b, a, x, y, w, h)
     ccall((:TS_VkCmdDrawRect, libtelescope), Cvoid, (Cfloat, Cfloat, Cfloat, Cfloat, Cint, Cint, Cint, Cint), r, g, b, a, x, y, w, h)
 end
 
-function TS_VkCmdDrawSprite(img, a, rx, ry, rw, rh, cx, cy, ci, cj, px, py, sx, sy)
-    ccall((:TS_VkCmdDrawSprite, libtelescope), Cvoid, (Ptr{Cchar}, Cfloat, Cint, Cint, Cint, Cint, Cint, Cint, Cint, Cint, Cint, Cint, Cint, Cint), img, a, rx, ry, rw, rh, cx, cy, ci, cj, px, py, sx, sy)
+function TS_VkCmdDrawSprite(img, a, rx, ry, rw, rh, cw, ch, ci, cj, px, py, sx, sy)
+    ccall((:TS_VkCmdDrawSprite, libtelescope), Cvoid, (Ptr{Cchar}, Cfloat, Cint, Cint, Cint, Cint, Cint, Cint, Cint, Cint, Cint, Cint, Cint, Cint), img, a, rx, ry, rw, rh, cw, ch, ci, cj, px, py, sx, sy)
 end
 
 function TS_VkCmdClearColorImage(r, g, b, a)
