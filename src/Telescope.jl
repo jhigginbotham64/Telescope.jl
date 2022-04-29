@@ -11,6 +11,12 @@ struct TS_PositionInfo
     z::Cfloat
 end
 
+struct TS_VelocityInfo
+    x::Cfloat
+    y::Cfloat
+    z::Cfloat
+end
+
 struct TS_CollisionEvent
     id1::Cint
     id2::Cint
@@ -25,8 +31,8 @@ function TS_BtAddStaticBox(id, hx, hy, hz, px, py, pz)
     ccall((:TS_BtAddStaticBox, libtelescope), Cvoid, (Cint, Cfloat, Cfloat, Cfloat, Cfloat, Cfloat, Cfloat), id, hx, hy, hz, px, py, pz)
 end
 
-function TS_BtAddStaticTriggerBox(id, hx, hy, hz, px, py, pz)
-    ccall((:TS_BtAddStaticTriggerBox, libtelescope), Cvoid, (Cint, Cfloat, Cfloat, Cfloat, Cfloat, Cfloat, Cfloat), id, hx, hy, hz, px, py, pz)
+function TS_BtAddTriggerBox(id, hx, hy, hz, px, py, pz)
+    ccall((:TS_BtAddTriggerBox, libtelescope), Cvoid, (Cint, Cfloat, Cfloat, Cfloat, Cfloat, Cfloat, Cfloat), id, hx, hy, hz, px, py, pz)
 end
 
 function TS_BtRemovePhysicsObject(id)
@@ -37,38 +43,50 @@ function TS_BtSetLinearVelocity(id, vx, vy, vz)
     ccall((:TS_BtSetLinearVelocity, libtelescope), Cvoid, (Cint, Cfloat, Cfloat, Cfloat), id, vx, vy, vz)
 end
 
-# no prototype is found for this function at telescope.h:38:6, please use with caution
+function TS_BtGetLinearVelocity(id)
+    ccall((:TS_BtGetLinearVelocity, libtelescope), TS_VelocityInfo, (Cint,), id)
+end
+
+function TS_BtSetGravity(gx, gy, gz)
+    ccall((:TS_BtSetGravity, libtelescope), Cvoid, (Cfloat, Cfloat, Cfloat), gx, gy, gz)
+end
+
+function TS_BtSetCollisionMargin(id, margin)
+    ccall((:TS_BtSetCollisionMargin, libtelescope), Cvoid, (Cint, Cfloat), id, margin)
+end
+
+# no prototype is found for this function at telescope.h:51:6, please use with caution
 function TS_BtStepSimulation()
     ccall((:TS_BtStepSimulation, libtelescope), Cvoid, ())
 end
 
-# no prototype is found for this function at telescope.h:40:26, please use with caution
+# no prototype is found for this function at telescope.h:53:26, please use with caution
 function TS_BtGetNextCollision()
     ccall((:TS_BtGetNextCollision, libtelescope), TS_CollisionEvent, ())
 end
 
-function TS_BtGetPositionById(id)
-    ccall((:TS_BtGetPositionById, libtelescope), TS_PositionInfo, (Cint,), id)
+function TS_BtGetPosition(id)
+    ccall((:TS_BtGetPosition, libtelescope), TS_PositionInfo, (Cint,), id)
 end
 
-# no prototype is found for this function at telescope.h:44:14, please use with caution
+# no prototype is found for this function at telescope.h:57:14, please use with caution
 function TS_SDLGetError()
     ccall((:TS_SDLGetError, libtelescope), Ptr{Cchar}, ())
 end
 
 function TS_VkCmdDrawRect(r, g, b, a, x, y, w, h)
-    ccall((:TS_VkCmdDrawRect, libtelescope), Cvoid, (Cfloat, Cfloat, Cfloat, Cfloat, Cint, Cint, Cint, Cint), r, g, b, a, x, y, w, h)
+    ccall((:TS_VkCmdDrawRect, libtelescope), Cvoid, (Cfloat, Cfloat, Cfloat, Cfloat, Cfloat, Cfloat, Cfloat, Cfloat), r, g, b, a, x, y, w, h)
 end
 
 function TS_VkCmdDrawSprite(img, r, g, b, a, rx, ry, rw, rh, cw, ch, ci, cj, px, py, sx, sy)
-    ccall((:TS_VkCmdDrawSprite, libtelescope), Cvoid, (Ptr{Cchar}, Cfloat, Cfloat, Cfloat, Cfloat, Cint, Cint, Cint, Cint, Cint, Cint, Cint, Cint, Cint, Cint, Cfloat, Cfloat), img, r, g, b, a, rx, ry, rw, rh, cw, ch, ci, cj, px, py, sx, sy)
+    ccall((:TS_VkCmdDrawSprite, libtelescope), Cvoid, (Ptr{Cchar}, Cfloat, Cfloat, Cfloat, Cfloat, Cint, Cint, Cint, Cint, Cint, Cint, Cint, Cint, Cfloat, Cfloat, Cfloat, Cfloat), img, r, g, b, a, rx, ry, rw, rh, cw, ch, ci, cj, px, py, sx, sy)
 end
 
 function TS_VkCmdClearColorImage(r, g, b, a)
     ccall((:TS_VkCmdClearColorImage, libtelescope), Cvoid, (Cfloat, Cfloat, Cfloat, Cfloat), r, g, b, a)
 end
 
-# no prototype is found for this function at telescope.h:52:6, please use with caution
+# no prototype is found for this function at telescope.h:65:6, please use with caution
 function TS_VkBeginDrawPass()
     ccall((:TS_VkBeginDrawPass, libtelescope), Cvoid, ())
 end
@@ -81,7 +99,7 @@ function TS_Init(ttl, wdth, hght)
     ccall((:TS_Init, libtelescope), Cvoid, (Ptr{Cchar}, Cint, Cint), ttl, wdth, hght)
 end
 
-# no prototype is found for this function at telescope.h:58:6, please use with caution
+# no prototype is found for this function at telescope.h:71:6, please use with caution
 function TS_Quit()
     ccall((:TS_Quit, libtelescope), Cvoid, ())
 end
