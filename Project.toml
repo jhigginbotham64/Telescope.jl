@@ -1,7 +1,7 @@
 name = "Telescope"
 uuid = "5cda3ad9-a1fd-4c59-8c0c-bd6100725b84"
 authors = ["Joshua Higginbotham <jhigginbotham64@gmail.com> and contributors"]
-version = "0.1.2"
+version = "0.2.0"
 
 [deps]
 CEnum = "fa961155-64e5-5f13-b03f-caf6b980ea82"
@@ -11,7 +11,7 @@ Telescope_jll = "ae456e04-aaf2-55ce-80c6-09193969412e"
 [compat]
 Clang = "0.15"
 CEnum = "0.4"
-Telescope_jll = "0.1.2"
+Telescope_jll = "0.2.0"
 julia = "1.6"
 
 [extras]
