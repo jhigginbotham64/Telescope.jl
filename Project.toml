@@ -1,7 +1,7 @@
 name = "Telescope"
 uuid = "5cda3ad9-a1fd-4c59-8c0c-bd6100725b84"
 authors = ["Joshua Higginbotham <jhigginbotham64@gmail.com> and contributors"]
-version = "0.2.0"
+version = "0.2.1"
 
 [deps]
 CEnum = "fa961155-64e5-5f13-b03f-caf6b980ea82"
