@@ -1,3 +1,6 @@
+"""
+Bindings for Telescope
+"""
 module Telescope
 
 using Telescope_jll
